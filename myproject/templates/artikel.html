@@ -1,0 +1,172 @@
+{% extends 'landingpage/base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>{{ title }}</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Boxicons CSS -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: black;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: #4717f6;
+    }
+
+    .navbar a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .navbar a.active, .navbar a:hover {
+      color: #4717f6;
+      border-bottom: 2px solid #4717f6;
+    }
+
+    .product-section {
+      padding: 80px 5% 50px;
+      background-color: #fff;
+    }
+
+    .product-card {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-card img {
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .footer {
+      background-color: black;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 50px;
+    }
+
+    .footer .social a {
+      color: white;
+      margin: 0 10px;
+      font-size: 24px;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .footer .social a:hover {
+      color: #4717f6;
+      transform: scale(1.2) translateY(-5px);
+    }
+
+    .footer .list li {
+      display: inline;
+      margin: 0 10px;
+    }
+
+    .footer .list a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .footer .list a:hover {
+      text-decoration: underline;
+      color: #4717f6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="/" class="logo"><span>Toko</span> Jersey</a>
+    <nav class="navbar">
+      <a href="" class="active">Home</a>
+      <a href="/artikel">Artikel</a>
+      <a href="/about">About Me</a>
+    </nav>
+  </header>
+
+  <section class="product-section">
+    <div class="container">
+        <h2 class="text-center mb-5">Artikel Terbaru</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for a in artikel %}
+            <div class="col">
+                <div class="card product-card">
+                    <img src="{{ a.gambar.url }}" class="card-img-top" alt="Jersey 1">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ a.judul }}</h5>
+                        <p class="card-text">{{ a.konten|truncatechars:200 }}</p>
+                        <a href="{% url 'detail_artikel' a.id %}" class="btn btn-primary">Baca Selengkapnya</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="social mb-3">
+      <a href="#"><box-icon type='logo' name='linkedin'></box-icon></a>
+      <a href="#"><box-icon type='logo' name='instagram'></box-icon></a>
+      <a href="#"><box-icon type='logo' name='twitter'></box-icon></a>
+      <a href="#"><box-icon type='logo' name='facebook'></box-icon></a>
+      <a href="#"><box-icon type='logo' name='tiktok'></box-icon></a>
+    </div>
+    <ul class="list">
+      <li><a href="#">FAQ</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">About Me</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <p class="copyright mt-3">&copy; Sendy Ahmad | All Rights Reserved</p>
+  </footer>
+
+  <!-- Script -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</body>
+</html>
