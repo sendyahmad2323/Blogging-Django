@@ -11,6 +11,8 @@ from myproject.authentication import  login, logout, registrasi
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api-auth/', include('rest_framework.urls')),
+    
     path('', Toko, name="Toko"),
     path('artikel/<int:id>', detail_artikel, name="detail_artikel"),
     path('artikel-not-found/', not_found_artikel, name="not_found_artikel"),

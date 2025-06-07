@@ -12,7 +12,7 @@
             <h3 class="title mb-4">{{ artikel.judul }}</h3>
             <img src="{{ artikel.gambar.url }}" class="card-img-top">
             <p class="text-dark">
-              {{ artikel.konten }}
+              {{ artikel.konten|safe }}
             </p>
             <p class="text-dark" style="font-style: italic;">{{ artikel.created_at }}</p>
           </div>
