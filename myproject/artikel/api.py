@@ -15,3 +15,14 @@ def api_artikel_blog_list(request):
         "rows":serializer.data
     }
     return Response(content, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+def api_artikel_blog_list(request):
+    artikel = ArtikelBlog.objects.all()
+    serializer = ArtikelBlogSerializer(artikel, many=True)
+    content = {
+        "message":"berhasil",
+        "record":artikel.count(),
+        "rows":serializer.data
+    }
+    return Response(content, status=status.HTTP_200_OK)

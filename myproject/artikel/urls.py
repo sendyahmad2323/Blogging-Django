@@ -20,8 +20,6 @@ from artikel.api import (
 )
 
 urlpatterns = [
-    ########################## Fungsi Api Artikel ######################
-    path('api/artikel/list',api_artikel_blog_list),
     ########################## fungsi untuk user biasa #################
     path('artikel/list',artikel_list, name="artikel_list"),
     path('artikel/tambah',artikel_tambah, name="artikel_tambah"),

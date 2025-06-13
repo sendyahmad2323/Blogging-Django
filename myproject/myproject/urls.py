@@ -21,6 +21,7 @@ urlpatterns = [
     path('dashboard/artikel_list', artikel_list, name="artikel_list"),
     
     path('dashboard/', include("artikel.urls")),
+    path('api/', include("artikel.urls_api")),
     
     ###### Authentication ######
     path('auth-login', login, name="login"),
