@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os
 import pymysql
+from decouple import config
 pymysql.install_as_MySQLdb()
 
 from pathlib import Path
@@ -33,10 +34,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ip%b0qm(f+_@%lz%9sto2jobqa2*cn445@)zk@r059_$70($r('
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = ['*']
 
@@ -299,9 +300,9 @@ CKEDITOR_5_CONFIGS = {
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'APP': {
-            'client_id': '77864412996-lmvfgb4g0g99nl6kpogsfn7r1kukmbqq.apps.googleusercontent.com',  # Ganti dengan Client ID Google Anda
-            'secret': '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',    # Ganti dengan Client Secret Google Anda
-            'key': ''                     # Biasanya dibiarkan kosong untuk Google
+            'client_id': config('GOOGLE_CLIENT_ID'),
+            'secret': config('GOOGLE_CLIENT_SECRET'),
+            'key': ''
         }
     }
 }
