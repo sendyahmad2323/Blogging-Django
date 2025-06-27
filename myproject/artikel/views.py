@@ -6,13 +6,8 @@ from django.contrib.auth.models import User, Group
 from artikel.models import Kategori, ArtikelBlog
 from artikel.forms import KategoriForms, ArtikelForms
 
-# Create your views here.
 def in_operator(user):
-    get_user = user.groups.filter(name='Operator').count()
-    if get_user == 0:
-        return False
-    else:
-        return True
+    return user.groups.filter(name='Operator').exists()
 
 ######################## user bisa ###########################
 @login_required(login_url='/auth-login')
