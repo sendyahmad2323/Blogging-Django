@@ -1,8 +1,8 @@
 {% load static %}
 <nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3  navbar-transparent ">
     <div class="container">
-      <a class="navbar-brand  text-white  d-none d-md-block" href=" https://demos.creative-tim.com/material-kit-pro/index " rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom" target="_blank">
-        My Berita
+      <a class="navbar-brand  text-white  d-none d-md-block" href="/" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom" target="_blank">
+        SEN Blog
       </a>
       <a class="navbar-brand  text-white  d-block d-md-none" href=" https://demos.creative-tim.com/material-kit-pro/index " rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom" target="_blank">
         Material Design
@@ -18,15 +18,9 @@
       <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0" id="navigation">
         <ul class="navbar-nav navbar-nav-hover ms-auto">
           <li class="nav-item dropdown dropdown-hover mx-2">
-            <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" href="/" role="button" aria-expanded="false">
-              <i class="material-icons opacity-6 me-2 text-md">dashboard</i>
-              Berita
-            </a>
-          </li>
-          <li class="nav-item dropdown dropdown-hover mx-2">
-            <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" href="/" aria-expanded="false">
+            <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" href="{% url 'gallery' %}" aria-expanded="false">
               <i class="material-icons opacity-6 me-2 text-md">contacts</i>
-              Gellery
+              Gallery
             </a>
           </li>
         </ul>

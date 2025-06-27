@@ -43,7 +43,7 @@ def artikel_tambah(request):
 
 @login_required(login_url='/auth-login')
 def artikel_update(request, id_artikel):
-    template_name = "dashboard/artikel_forms.html"
+    template_name = "dashboard/admin/artikel_forms.html"
     try:
         artikel = ArtikelBlog.objects.get(id=id_artikel, created_by=request.user)
     except:
@@ -165,33 +165,37 @@ def admin_artikel_tambah(request):
 @login_required(login_url='/auth-login')
 @user_passes_test(in_operator, login_url='/')
 def admin_artikel_update(request, id_artikel):
-    template_name = "dashboard/admin/artikel_forms.html"
-    artikel = ArtikelBlog.objects.get(id=id_artikel)
+    """Edit data artikel sesuai dengan id_artikel."""
+    artikel = get_object_or_404(ArtikelBlog, id=id_artikel)
+
     if request.method == "POST":
-        forms = ArtikelForms(request.POST, request.FILES, instance=artikel)
-        if forms.is_valid():
-            pub = forms.save(commit=False)
+        form = ArtikelForms(request.POST, request.FILES, instance=artikel)
+        if form.is_valid():
+            pub = form.save(commit=False)
             pub.created_by = request.user
             pub.save()
-            messages.success(request, 'berhasil melakukan update artikel')
-        return redirect(admin_artikel_list)
-    forms = ArtikelForms(instance=artikel)
-    context = {
-        "forms":forms
-    }
-    return render(request, template_name, context)
+            messages.success(request, 'Berhasil melakukan update artikel')
+            return redirect('admin_artikel_list')
+        else:
+            messages.error(request, 'Gagal memvalidasi form, periksa kembali data yang diisi')
+    else:
+        form = ArtikelForms(instance=artikel)
+
+    return render(request, "dashboard/admin/artikel_forms.html", {"forms": form})
+
 
 @login_required(login_url='/auth-login')
 @user_passes_test(in_operator, login_url='/')
 def admin_artikel_delete(request, id_artikel):
-    try:
-        ArtikelBlog.objects.get(id=id_artikel).delete()
-        messages.success(request, 'berhasil delete artikel')
-    except:
-        messages.error(request, 'gagal delete artikel')
-    
-    return redirect(admin_artikel_list)
+    """Hapus artikel berdasarkan id_artikel."""
+    artikel = get_object_or_404(ArtikelBlog, id=id_artikel)
 
+    try:
+        artikel.delete()
+        messages.success(request, 'Berhasil menghapus artikel')
+    except Exception as e:
+        messages.error(request, f'Gagal menghapus artikel: {str(e)}')
+    return redirect('admin_artikel_list')  
 
 def detail_artikel(request, id):
     template_name = "landingpage/detail_artikel.html"

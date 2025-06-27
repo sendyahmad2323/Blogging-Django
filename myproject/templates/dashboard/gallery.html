@@ -1,0 +1,30 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-4">
+  <h3 class="mb-4 text-uppercase text-primary">Gallery Artikel</h3>
+  <div class="row">
+    {% for artikel in artikel_list %}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow">
+          <img src="{{ artikel.gambar.url }}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="{{ artikel.judul }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ artikel.judul }}</h5>
+            <p class="card-text">
+              <strong>Kategori:</strong> {{ artikel.kategori }}<br>
+              <strong>Author:</strong> {{ artikel.created_by }}<br>
+              <strong>Tanggal:</strong> {{ artikel.created_at|date:"d M Y" }}
+            </p>
+            <a href="{% url 'detail_artikel' artikel.id %}" class="btn btn-sm btn-primary">Lihat Detail</a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="col-12">
+        <p class="text-muted">Belum ada artikel yang tersedia.</p>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

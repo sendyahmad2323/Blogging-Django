@@ -2,29 +2,40 @@
 {% load static %}
 {% block content %}
 <div class="row mt-4">
-    <div class="col-lg-12 col-12 mx-auto position-relative">
-      <div class="card">
-        <div class="card-header p-3 pt-2">
-          <div class="icon icon-lg icon-shape bg-gradient-dark shadow text-center border-radius-xl mt-n4 me-3 float-start">
-            <i class="material-icons opacity-10">event</i>
+  <div class="col-lg-8 col-md-10 mx-auto">
+    <div class="card shadow border-radius-xl">
+      <!-- Header -->
+      <div class="card-header bg-gradient-dark text-white d-flex align-items-center">
+        <div class="icon icon-md icon-shape text-dark shadow text-center border-radius-md me-3">
+          <i class="material-icons opacity-10">category</i>
+        </div>
+        <h6 class="mb-0 text-white">Form Tambah Kategori</h6>
+      </div>
+
+      <!-- Form Body -->
+      <div class="card-body px-4 py-4">
+        <form method="POST" novalidate>
+          {% csrf_token %}
+
+          <div class="input-group input-group-outline mb-3">
+            <label for="id_nama" class="form-label text-dark fw-semibold">Nama Kategori</label>
+            {{ forms.nama }}
+            {% if forms.nama.errors %}
+              <div class="text-danger small mt-1">
+                {{ forms.nama.errors.as_text }}
+              </div>
+            {% endif %}
           </div>
-          <h6 class="mb-0">Form Kategori</h6>
-        </div>
-        <div class="card-body pt-2">
-            <form method="POST">
-                {% csrf_token %}
-                <div class="input-group input-group-dynamic">
-                    <label for="projectName" class="form-label">Nama Kategori</label>
-                    {{ forms.nama }}
-                </div>
-                <div class="d-flex justify-content-end mt-4">
-                   <button type="submit" name="button" class="btn bg-gradient-dark m-0 ms-2">Simpan</button>
-                </div>
-            </form>
-        </div>
+
+          <div class="d-flex justify-content-end mt-3">
+            <a href="{% url 'admin_kategori_list' %}" class="btn btn-outline-secondary me-2">Batal</a>
+            <button type="submit" class="btn btn-dark">💾 Simpan</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
+</div>
 {% endblock %}
 
 {% block js %}

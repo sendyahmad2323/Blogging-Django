@@ -6,7 +6,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="{% static 'dashboard/assets/img/apple-icon.png' %}">
-  <link rel="icon" type="image/png" href="{% static 'dashboard/assets/img/favicon.png' %}">
+  <link rel="icon" type="image/png" href="{% static 'dashboard/assets/img/download.png' %}">
   <title>
     Dashboard
   </title>
@@ -51,7 +51,7 @@
                 </svg>
               </a>
             </li>
-            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Dashboard</a></li>
             <li class="breadcrumb-item text-sm text-dark active" aria-current="page">MyBlog</li>
           </ol>
           <h6 class="font-weight-bolder mb-0">Myblog</h6>
@@ -66,19 +66,7 @@
           </a>
         </div>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-            <div class="input-group input-group-outline">
-              <label class="form-label">Search here</label>
-              <input type="text" class="form-control">
-            </div>
-          </div>
           <ul class="navbar-nav  justify-content-end">
-            <li class="nav-item">
-              <a href="../../pages/authentication/signin/illustration.html" class="nav-link text-body p-0 position-relative" target="_blank">
-                <i class="material-icons me-sm-1">
-              account_circle
-            </i>
-              </a>
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
@@ -102,7 +90,7 @@
               notifications
             </i>
                 <span class="position-absolute top-5 start-100 translate-middle badge rounded-pill bg-danger border border-white small py-1 px-2">
-                  <span class="small">11</span>
+                  <span class="small">1</span>
                   <span class="visually-hidden">unread notifications</span>
                 </span>
               </a>
@@ -114,30 +102,6 @@
                       <div class="ms-2">
                         <h6 class="text-sm font-weight-normal my-auto">
                           Check new messages
-                        </h6>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li class="mb-2">
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <div class="d-flex align-items-center py-1">
-                      <span class="material-icons">podcasts</span>
-                      <div class="ms-2">
-                        <h6 class="text-sm font-weight-normal my-auto">
-                          Manage podcast session
-                        </h6>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <div class="d-flex align-items-center py-1">
-                      <span class="material-icons">shopping_cart</span>
-                      <div class="ms-2">
-                        <h6 class="text-sm font-weight-normal my-auto">
-                          Payment successfully completed
                         </h6>
                       </div>
                     </div>
@@ -181,16 +145,13 @@
             <div class="col-lg-6">
               <ul class="nav nav-footer justify-content-center justify-content-lg-end">
                 <li class="nav-item">
-                  <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Sendy Ahmad</a>
+                  <a class="nav-link text-muted" target="_blank">Sendy Ahmad</a>
                 </li>
                 <li class="nav-item">
                   <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">Tentang Kami</a>
                 </li>
                 <li class="nav-item">
-                  <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">My Blog</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
+                  <a href="/" class="nav-link text-muted" target="_blank">My Blog</a>
                 </li>
               </ul>
             </div>
@@ -206,9 +167,10 @@
     <div class="card shadow-lg">
       <div class="card-header pb-0 pt-3">
         <div class="float-start">
-          <h5 class="mt-3 mb-0">Material UI Configurator</h5>
-          <p>See our dashboard options.</p>
+          <h5 class="mt-3 mb-0">Pengaturan Tampilan</h5>
+          <p>Sesuaikan gaya dashboard sesuai kebutuhan dan kenyamanan Anda.</p>
         </div>
+
         <div class="float-end mt-4">
           <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
             <i class="material-icons">clear</i>
@@ -265,14 +227,15 @@
           </div>
         </div>
         <hr class="horizontal dark my-sm-4">
-        <a class="btn bg-gradient-primary w-100" href="https://www.creative-tim.com/product/material-dashboard-pro">Login</a>
-        <a class="btn btn-outline-dark w-100" href="https://www.creative-tim.com/learning-lab/bootstrap/overview/material-dashboard">View documentation</a>
+        <a class="btn bg-gradient-primary w-100" href="/auth-login">Login</a>
+        <a class="btn btn-outline-dark w-100" href="/">View documentation</a>
         <div class="w-100 text-center">
           <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star creativetimofficial/material-dashboard on GitHub">Star</a>
           <h6 class="mt-3">Thank you for sharing!</h6>
-          <a href="https://twitter.com/intent/tweet?text=Check%20Material%20UI%20Dashboard%20PRO%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fsoft-ui-dashboard-pro" class="btn btn-dark mb-0 me-2" target="_blank">
-            <i class="fab fa-twitter me-1" aria-hidden="true"></i> Tweet
+          <a href="https://www.instagram.com/seensen_y" class="btn btn-dark mb-0 me-2" target="_blank">
+            <i class="fab fa-instagram me-1" aria-hidden="true"></i> Instagram
           </a>
+
           <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/material-dashboard-pro" class="btn btn-dark mb-0 me-2" target="_blank">
             <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
           </a>

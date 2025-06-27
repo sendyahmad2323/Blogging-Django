@@ -4,33 +4,32 @@
 {% block content %}
 <div class="container">
   <div class="row">
+
     <!-- Artikel Section -->
     <div class="col-lg-7">
       <section class="py-5">
         {% for a in artikel %}
-        <section class="py-5">
-          <div class="card card-plain card-blog mt-5">
-            <div class="row">
-              <div class="col-lg-4 col-md-4">
-                <div class="card-image position-relative border-radius-lg">
-                  <div class="blur-shadow-image">
-                    <img class="img border-radius-lg" src="{{ a.gambar.url }}" alt="gambar artikel" loading="lazy">
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-7 col-md-7 my-sm-auto mt-3 ms-sm-3">
-                <h4>
-                  <a href="{% url 'detail_artikel' a.id %}" class="text-dark">{{ a.judul }}</a>
-                </h4>
-                <p>{{ a.konten|truncatechars:200 }}</p>
-                <div class="author">
-                  <img src="{% static 'landingpage/assets/img/team-4.jpg' %}" alt="team" class="avatar avatar-sm shadow me-2 border-radius-lg" loading="lazy">
-                  <p class="my-auto">Sendy Ahmad</p>
+        <div class="card card-plain card-blog mt-5">
+          <div class="row">
+            <div class="col-lg-4 col-md-4">
+              <div class="card-image position-relative border-radius-lg">
+                <div class="blur-shadow-image">
+                  <img class="img border-radius-lg" src="{{ a.gambar.url }}" alt="gambar artikel" loading="lazy">
                 </div>
               </div>
             </div>
+            <div class="col-lg-7 col-md-7 my-sm-auto mt-3 ms-sm-3">
+              <h4>
+                <a href="{% url 'detail_artikel' a.id %}" class="text-dark">{{ a.judul }}</a>
+              </h4>
+              <p>{{ a.konten|truncatechars:200 }}</p>
+              <div class="author">
+                <img src="{% static 'landingpage/assets/img/team-4.jpg' %}" alt="team" class="avatar avatar-sm shadow me-2 border-radius-lg" loading="lazy">
+                <p class="my-auto">Sendy Ahmad</p>
+              </div>
+            </div>
           </div>
-        </section>
+        </div>
         {% endfor %}
       </section>
     </div>
@@ -54,57 +53,31 @@
         </a>
         {% endfor %}
 
-        <!-- Top Berita (Contoh Statik) -->
+        <!-- Top Berita Dinamis -->
         <h4 class="mt-5">Top Berita</h4>
-          <div class="card card-plain card-blog mt-4">
-            <div class="row">
-              <div class="col-lg-4 col-md-4">
-                <div class="card-image position-relative border-radius-lg">
-                  <div class="blur-shadow-image">
-                    <img class="img border-radius-lg" src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="curved11" loading="lazy">
-                  </div>
+        {% for top in artikel|slice:":3" %}
+        <div class="card card-plain card-blog mt-4">
+          <div class="row">
+            <div class="col-lg-4 col-md-4">
+              <div class="card-image position-relative border-radius-lg">
+                <div class="blur-shadow-image">
+                  <img class="img border-radius-lg" src="{{ top.gambar.url }}" alt="gambar artikel" loading="lazy">
                 </div>
               </div>
-              <div class="col-lg-8 col-md-8 my-sm-auto mt-3">
-                <h5>
-                  <a href="javascript:;" class="text-dark font-weight-normal">MateLabs mixes machine learning</a>
-                </h5>
-              </div>
+            </div>
+            <div class="col-lg-8 col-md-8 my-sm-auto mt-3">
+              <h6 class="text-primary mb-1">{{ top.kategori.nama }}</h6>
+              <h5>
+                <a href="{% url 'detail_artikel' top.id %}" class="text-dark font-weight-normal">
+                  {{ top.judul|truncatechars:50 }}
+                </a>
+              </h5>
             </div>
           </div>
-          <div class="card card-plain card-blog mt-4">
-            <div class="row">
-              <div class="col-lg-4 col-md-4">
-                <div class="card-image position-relative border-radius-lg">
-                  <div class="blur-shadow-image">
-                    <img class="img border-radius-lg" src="https://images.unsplash.com/photo-1599639932525-213272ff954b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1879&q=80" alt="curved9" loading="lazy">
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-8 col-md-8 my-sm-auto mt-3">
-                <h5>
-                  <a href="javascript:;" class="text-dark font-weight-normal">Mixes machine learning</a>
-                </h5>
-              </div>
-            </div>
-          </div>
-          <div class="card card-plain card-blog mt-4">
-            <div class="row">
-              <div class="col-lg-4 col-md-4">
-                <div class="card-image position-relative border-radius-lg">
-                  <div class="blur-shadow-image">
-                    <img class="img border-radius-lg" src="https://images.unsplash.com/photo-1622480914645-8fa9b36178a5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="curved8" loading="lazy">
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-8 col-md-8 my-sm-auto mt-3">
-                <h5>
-                  <a href="javascript:;" class="text-dark font-weight-normal">MateLabs mixes machine learning</a>
-                </h5>
-              </div>
-            </div>
-          </div>
-
+        </div>
+        {% empty %}
+        <p class="text-muted">Tidak ada artikel yang tersedia.</p>
+        {% endfor %}
       </div>
     </div>
   </div>

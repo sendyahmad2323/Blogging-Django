@@ -1,0 +1,41 @@
+{% extends 'landingpage/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row mb-4">
+    <div class="col text-center">
+      <h2 class="text-dark">Galeri Artikel</h2>
+      <p class="text-muted">Menampilkan semua artikel lengkap dengan kategori dan penulis.</p>
+    </div>
+  </div>
+  <div class="row">
+    {% for artikel in artikel %}
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card shadow h-100">
+        <img src="{{ artikel.gambar.url }}" class="card-img-top" alt="{{ artikel.judul }}" style="height: 200px; object-fit: cover;" loading="lazy">
+        <div class="card-body">
+          <h5 class="card-title text-dark">{{ artikel.judul }}</h5>
+          <p class="mb-1">
+            <i class="material-icons text-sm text-primary">category</i>
+            <small class="text-muted">{{ artikel.kategori }}</small>
+          </p>
+          <p class="mb-2">
+            <i class="material-icons text-sm text-primary">person</i>
+            <small class="text-muted">{{ artikel.created_by }}</small>
+          </p>
+          <p class="card-text">{{ artikel.konten|truncatechars:100 }}</p>
+        </div>
+        <div class="card-footer bg-transparent border-0">
+          <a href="{% url 'detail_artikel' artikel.id %}" class="btn btn-sm btn-outline-primary">Lihat Detail</a>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <div class="col-12 text-center">
+      <p class="text-muted">Belum ada artikel tersedia.</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

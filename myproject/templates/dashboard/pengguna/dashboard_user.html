@@ -1,0 +1,67 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-4">
+  <h3 class="text-dark text-uppercase mb-4">Dashboard Pengguna</h3>
+
+  <!-- Ringkasan Statistik -->
+  <div class="row">
+    <div class="col-md-4 mb-4">
+      <div class="card shadow text-center">
+        <div class="card-body">
+          <h5 class="card-title">Total Artikel</h5>
+          <h2>{{ total_artikel }}</h2>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card shadow text-center">
+        <div class="card-body">
+          <h5 class="card-title">Kategori Populer</h5>
+          <h6>{{ kategori_populer }}</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card shadow text-center">
+        <div class="card-body">
+          <h5 class="card-title">Penulis</h5>
+          <h6>{{ user.username }}</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Artikel Terbaru -->
+<div class="card shadow mb-4">
+  <div class="card-header bg-gradient-dark text-white d-flex justify-content-between align-items-center">
+    <h5 class="mb-0 text-white"><i class="material-icons-round me-2 text-white">article</i> Artikel Terbaru</h5>
+    <a href="{% url 'artikel_list' %}" class="btn btn-sm btn-light text-primary">Lihat Semua</a>
+  </div>
+  <div class="card-body p-0">
+    <ul class="list-group list-group-flush">
+      {% for artikel in artikel_terbaru %}
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">{{ artikel.judul }}</div>
+          <small class="text-muted">
+            <i class="material-icons-round text-secondary" style="font-size: 14px;">event</i>
+            {{ artikel.created_at|date:"d M Y" }} |
+            <i class="material-icons-round text-secondary" style="font-size: 14px;">category</i>
+            <span class="badge bg-info text-dark">{{ artikel.kategori }}</span> |
+            <i class="material-icons-round text-secondary" style="font-size: 14px;">person</i>
+            {{ artikel.created_by }}
+          </small>
+        </div>
+        <a href="{% url 'detail_artikel' artikel.id %}" class="btn btn-sm btn-outline-primary">Lihat</a>
+      </li>
+      {% empty %}
+      <li class="list-group-item text-center text-muted">
+        Belum ada artikel terbaru.
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}

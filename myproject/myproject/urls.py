@@ -19,10 +19,17 @@ urlpatterns = [
     path('about', about, name="about"),
     path('dashboard/', dashboard, name="dashboard"),
     path('dashboard/artikel_list', artikel_list, name="artikel_list"),
+    path('gallery/', gallery_view, name='gallery'),
+    path('gallery_admin/', dashboard_gallery, name='dashboard_gallery'),
     
     path('dashboard/', include("artikel.urls")),
+    path('user-dashboard/', user_dashboard, name='user_dashboard'),
     path('api/', include("artikel.urls_api")),
-    
+    path('accounts/', include('allauth.urls')),
+
+    # urls.py
+    path('auth/gis/callback/', google_gis_callback, name='google_gis_callback'),
+
     ###### Authentication ######
     path('auth-login', login, name="login"),
     path('auth-logout', logout, name="logout"),

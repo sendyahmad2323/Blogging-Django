@@ -1,53 +1,73 @@
 {% extends 'dashboard/base.html' %}
 {% load static %}
+
 {% block css %}
 <style>
   .django-ckeditor-widget {
     width: 100%;
+    min-height: 300px;
+  }
+  .form-label {
+    font-weight: 600;
+    margin-bottom: 5px;
   }
 </style>
-<link href="{% static 'django_ckeditor_5/dist/styles.css' %}" media="all" rel="stylesheet"/>
-<script src="{% static 'django_ckeditor_5/dist/bundle.js' %}"></script>
+<link href="{% static 'django_ckeditor_5/dist/styles.css' %}" rel="stylesheet" />
 {% endblock %}
 
 {% block content %}
 <div class="row mt-4">
-    <div class="col-lg-12 col-12 mx-auto position-relative">
-      <div class="card">
-        <div class="card-header p-3 pt-2">
-          <div class="icon icon-lg icon-shape bg-gradient-dark shadow text-center border-radius-xl mt-n4 me-3 float-start">
-            <i class="material-icons opacity-10">event</i>
+  <div class="col-lg-10 col-md-12 mx-auto">
+    <div class="card shadow-sm border-radius-xl">
+      <div class="card-header bg-gradient-dark text-white p-4 d-flex align-items-center">
+        <div class="icon icon-shape text-dark me-3">
+          <i class="material-icons opacity-10">event</i>
+        </div>
+        <h6 class="mb-0 text-white ">Form Tambah Artikel</h6>
+      </div>
+      <div class="card-body p-4">
+        <form method="POST" enctype="multipart/form-data" novalidate>
+          {% csrf_token %}
+
+          <div class="input-group input-group-outline mb-3">
+            <label class="form-label">Judul Artikel</label>
+            {{ forms.judul }}
           </div>
-          <h6 class="mb-0">Form Artikel</h6>
-        </div>
-        <div class="card-body pt-2">
-            <form method="POST" enctype="multipart/form-data" novalidate>
-                {% csrf_token %}
-                <div class="input-group input-group-dynamic">
-                    <label for="projectName" class="form-label">Judul</label>
-                    {{ forms.judul }}
-                </div>
-                <br /><br />
-                <div class="input-group input-group-dynamic">
-                    <label for="projectName" class="form-label">Konten</label>
-                    {{ forms.konten }}
-                </div>
-                <div class="input-group input-group-dynamic">{{ forms.kategori }}</div>
-                <br /><br />
-                <div class="input-group input-group-dynamic">{{ forms.gambar }}</div>
-                <br /><br />
-                <div class="input-group input-group-dynamic">Status : &nbsp{{ forms.status }}</div>
-                <div class="d-flex justify-content-end mt-4">
-                   <button type="submit" name="button" class="btn bg-gradient-dark m-0 ms-2">Simpan</button>
-                </div>
-            </form>
-        </div>
+
+          <div class="mb-3">
+            <label class="form-label">Konten Artikel</label>
+            {{ forms.konten }}
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Kategori</label>
+            {{ forms.kategori }}
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Gambar Artikel</label>
+            {{ forms.gambar }}
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Status</label>
+            {{ forms.status }}
+          </div>
+
+          <div class="d-flex justify-content-end mt-4">
+            <button type="submit" class="btn bg-gradient-success">
+              <i class="material-icons text-white me-1">save</i> Simpan
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
+</div>
 {% endblock %}
 
 {% block js %}
+<script src="{% static 'django_ckeditor_5/dist/bundle.js' %}"></script>
 <script src="{% static 'dashboard/assets/js/plugins/choices.min.js' %}"></script>
 <script src="{% static 'dashboard/assets/js/plugins/quill.min.js' %}"></script>
 <script src="{% static 'dashboard/assets/js/plugins/flatpickr.min.js' %}"></script>
