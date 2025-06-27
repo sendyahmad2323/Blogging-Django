@@ -76,7 +76,7 @@ def artikel_delete(request, id_artikel):
 
 ###################### ADMIN #########################
 @login_required(login_url='/auth-login')
-@user_passes_test(in_operator, login_url='dashboard/admin/kategori_list.html')
+@user_passes_test(in_operator, login_url='/')
 def admin_kategori_list(request):
     template_name = "dashboard/admin/kategori_list.html"
     kategori = Kategori.objects.all()
@@ -135,7 +135,7 @@ def admin_kategori_delete(request, id_kategori):
 
 ############## Artikel Blog ##################
 @login_required(login_url='/auth-login')
-@user_passes_test(in_operator, login_url='dashboard/admin/artikel_list.html')
+@user_passes_test(in_operator, login_url='/')
 def admin_artikel_list(request):
     template_name = "dashboard/admin/artikel_list.html"
     artikel = ArtikelBlog.objects.all()
@@ -216,7 +216,7 @@ def detail_artikel(request, id):
 ################### Management User Oleh Operator ###################
 
 @login_required(login_url='/auth-login')
-@user_passes_test(in_operator, login_url='dashboard/admin/user_list.html')
+@user_passes_test(in_operator, login_url='/')
 def admin_management_user_list(request):
     template_name = "dashboard/admin/user_list.html"  # Assuming a common template naming convention
     daftar_user = User.objects.all()
