@@ -7,7 +7,7 @@ from artikel.models import Kategori, ArtikelBlog
 from artikel.forms import KategoriForms, ArtikelForms
 
 def in_operator(user):
-    return user.groups.filter(name='Operator').exists()
+    return user.groups.filter(name='operator').exists()
 
 ######################## user bisa ###########################
 @login_required(login_url='/auth-login')
