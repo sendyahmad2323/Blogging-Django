@@ -14,7 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', cast=bool)
 ENVIRONMENT = config('ENVIRONMENT', default='development')
-ALLOWED_HOSTS = ['localhost', 'senn-blogging.up.railway.app']
+ALLOWED_HOSTS = ['.up.railway.app', 'senn-blogging.up.railway.app']
 
 # Message tags
 MESSAGE_TAGS = {
