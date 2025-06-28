@@ -21,6 +21,36 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
   <link id="pagestyle" href="{% static 'landingpage/assets/css/material-kit-pro.css'%}?v=3.0.0" rel="stylesheet" />
+  <style>
+  .animated-navbar {
+    background: linear-gradient(-45deg, #1e3c72, #2a5298, #1e3c72, #2a5298);
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+    box-shadow: 0 0 20px rgba(0, 123, 255, 0.5);
+    transition: all 0.3s ease-in-out;
+  }
+
+  @keyframes gradientMove {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .navbar .material-icons {
+    vertical-align: middle;
+  }
+
+  .dropdown-menu a i {
+    font-size: 18px;
+  }
+</style>
+
 </head>
 
 <body class="blog-posts bg-gray-200">
