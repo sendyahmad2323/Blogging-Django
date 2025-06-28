@@ -3,9 +3,6 @@ from pathlib import Path
 import pymysql
 from decouple import config
 import dj_database_url
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
 from django.contrib.messages import constants as messages
 
 pymysql.install_as_MySQLdb()
@@ -44,22 +41,11 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'cloudinary',
-    'cloudinary_storage',
 
     # Custom apps
     'artikel',
     'galeri',
 ]
-
-# Media settings (pakai Cloudinary)
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME'),
-    'API_KEY': config('CLOUDINARY_API_KEY'),
-    'API_SECRET': config('CLOUDINARY_API_SECRET'),
-}
 
 SITE_ID = 1
 
