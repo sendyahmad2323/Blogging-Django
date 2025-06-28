@@ -206,7 +206,16 @@ SOCIALACCOUNT_PROVIDERS = {
             'client_id': config('GOOGLE_CLIENT_ID'),
             'secret': config('GOOGLE_CLIENT_SECRET'),
             'key': ''
-        }
+    },
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+        'OAUTH_PKCE_ENABLED': True,
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'REDIRECT_URI': 'https://senn-blogging.up.railway.app/accounts/google/login/callback/'  # <- tambahkan ini jika perlu
     }
 }
 
