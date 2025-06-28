@@ -22,7 +22,7 @@
               <h4>
                 <a href="{% url 'detail_artikel' a.id %}" class="text-dark">{{ a.judul }}</a>
               </h4>
-              <p>{{ a.konten|truncatechars:200 }}</p>
+              <p>{{ a.konten|safe|truncatechars:200 }}</p>
               <div class="author">
                 <img src="{% static 'landingpage/assets/img/team-4.jpg' %}" alt="team" class="avatar avatar-sm shadow me-2 border-radius-lg" loading="lazy">
                 <p class="my-auto">Sendy Ahmad</p>
