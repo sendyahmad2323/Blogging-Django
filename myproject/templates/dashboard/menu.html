@@ -18,8 +18,10 @@
       <!-- Profile Menu -->
       <li class="nav-item mb-2">
         <a data-bs-toggle="collapse" href="#ProfileNav" class="nav-link text-white d-flex align-items-center" aria-controls="ProfileNav" role="button" aria-expanded="false">
-          <img src="{% static 'dashboard/assets/img/team-3.jpg' %}" class="avatar rounded-circle me-2" width="36" height="36">
-          <span class="nav-link-text">{{ user }}</span>
+          <img src="{% static 'dashboard/assets/img/default-avatar.png' %}" 
+          onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name={{ user.get_full_name|default:user.username }}&background=0D8ABC&color=fff&size=128';" 
+          class="avatar rounded-circle me-2" width="36" height="36" alt="User Avatar">
+           <span class="nav-link-text">{{ user }}</span>
         </a>
         <div class="collapse" id="ProfileNav">
           <ul class="nav flex-column ps-4">
