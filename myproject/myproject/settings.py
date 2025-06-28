@@ -3,6 +3,9 @@ from pathlib import Path
 import pymysql
 from decouple import config
 import dj_database_url
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 from django.contrib.messages import constants as messages
 
 pymysql.install_as_MySQLdb()
