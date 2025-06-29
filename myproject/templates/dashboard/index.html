@@ -64,7 +64,7 @@
                   <i class="material-icons-round text-secondary" style="font-size: 14px">event</i> {{ artikel.created_at|date:"d M Y" }} |
                   <i class="material-icons-round text-secondary" style="font-size: 14px">category</i> 
                   <span class="badge bg-info text-dark">{{ artikel.kategori }}</span> |
-                  <i class="text-muted small" style="font-size: 14px">person</i> {{ artikel.created_by }}
+                  <i class="material-icons-round text-secondary" style="font-size: 14px">person</i> {{ artikel.created_by }}
                 </small>
               </div>
               <a href="{% url 'detail_artikel' artikel.id %}" class="btn btn-sm btn-outline-primary">Lihat</a>
