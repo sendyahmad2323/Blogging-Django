@@ -25,15 +25,27 @@
         <!-- Dropdown User -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-white d-flex align-items-center" href="#" id="navbarDropdown" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="{% static 'dashboard/assets/img/team-3.jpg' %}" class="rounded-circle me-2" width="32" height="32" alt="avatar">
-            {{ user.get_full_name|default:user.username }}
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="/dashboard"><i class="material-icons me-1">dashboard</i> Dashboard</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{% url 'logout' %}"><i class="material-icons me-1">logout</i> Logout</a></li>
-          </ul>
+          data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="{% static 'dashboard/assets/img/default-avatar.png' %}"
+          onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name={{ user.get_full_name|default:user.username|urlencode }}&background=0D8ABC&color=fff&size=64';"
+          class="rounded-circle me-2" width="32" height="32" alt="avatar">
+          {{ user.get_full_name|default:user.username }}
+        </a>
+          <ul class="dropdown-menu dropdown-menu-end shadow-sm rounded-3 border-0 py-2" style="min-width: 200px;">
+            <li>
+              <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="/dashboard">
+                <i class="material-icons text-primary" style="font-size: 20px;">dashboard</i>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li><hr class="dropdown-divider my-1"></li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center gap-2 py-2 text-danger" href="{% url 'logout' %}">
+                 <i class="material-icons" style="font-size: 20px;">logout</i>
+                 <span>Logout</span>
+              </a>
+              </li>
+            </ul>
         </li>
         {% else %}
         <!-- Tombol Login -->
