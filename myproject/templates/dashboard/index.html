@@ -64,7 +64,10 @@
                   <i class="material-icons-round text-secondary" style="font-size: 14px">event</i> {{ artikel.created_at|date:"d M Y" }} |
                   <i class="material-icons-round text-secondary" style="font-size: 14px">category</i> 
                   <span class="badge bg-info text-dark">{{ artikel.kategori }}</span> |
-                  <i class="material-icons-round text-secondary" style="font-size: 14px">person</i> {{ artikel.created_by }}
+                  <img src="{% static 'dashboard/assets/img/default-avatar.png' %}"
+                  onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name={{ artikel.created_by.get_full_name|default:artikel.created_by.username|urlencode }}&background=0D8ABC&color=fff&size=64';"
+                  class="avatar rounded-circle me-2" width="20" height="20" alt="Avatar Penulis">
+                  <i class="text-muted small" style="font-size: 14px">person</i> {{ artikel.created_by }}
                 </small>
               </div>
               <a href="{% url 'detail_artikel' artikel.id %}" class="btn btn-sm btn-outline-primary">Lihat</a>

@@ -7,18 +7,18 @@
   <!-- Detail Artikel -->
   <section class="py-5 mt-5">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-8 ms-auto me-auto">
-          <h6 class="opacity-7 text-uppercase font-weight-bolder text-sm">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <h6 class="opacity-7 text-uppercase font-weight-bolder text-sm mb-2">
             {{ artikel.kategori.nama }}
           </h6>
-          <h3 class="title mb-4">{{ artikel.judul }}</h3>
-          <img src="{{ artikel.gambar.url }}" class="card-img-top mb-4" alt="gambar artikel" loading="lazy">
-          <p class="text-dark">
+          <h2 class="title mb-4">{{ artikel.judul }}</h2>
+          <img src="{{ artikel.gambar.url }}" class="img-fluid rounded mb-4 shadow" alt="gambar artikel" loading="lazy">
+          <p class="text-dark fs-6 lh-base">
             {{ artikel.konten|safe }}
           </p>
-          <p class="text-dark" style="font-style: italic;">
-            Ditulis oleh: {{ artikel.created_by }} | {{ artikel.created_at }}
+          <p class="text-muted fst-italic mt-4">
+            Ditulis oleh: <strong>{{ artikel.created_by }}</strong> | {{ artikel.created_at }}
           </p>
         </div>
       </div>
@@ -26,40 +26,38 @@
   </section>
 
   <!-- Artikel Lainnya -->
-  <section class="py-7">
+  <section class="py-7 bg-light mt-5">
     <div class="container">
-      <div class="row">
-        <div class="col-9 text-center mx-auto">
+      <div class="row mb-5">
+        <div class="col text-center">
           <h3 class="mb-1">Lihat Artikel Lainnya</h3>
         </div>
+      </div>
 
+      <div class="row">
         {% for a in artikel_lainnya %}
-        <div class="col-lg-4 mb-lg-0 mb-4">
-          <div class="card h-100">
-            <div class="card-header p-0 mx-3 mt-n4 position-relative z-index-1">
-              <a href="{% url 'detail_artikel' a.id %}" class="d-block blur-shadow-image">
-                <img src="{{ a.gambar.url }}" class="img-fluid border-radius-md" alt="gambar artikel lainnya" loading="lazy">
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-header p-0 position-relative">
+              <a href="{% url 'detail_artikel' a.id %}" class="d-block overflow-hidden rounded-top">
+                <img src="{{ a.gambar.url }}" class="img-fluid" alt="gambar artikel lainnya" loading="lazy">
               </a>
             </div>
             <div class="card-body">
-              <span class="text-gradient text-primary text-uppercase text-xs font-weight-bold">
+              <span class="text-primary text-uppercase text-xs fw-bold">
                 {{ a.kategori.nama }}
               </span>
-              <a href="{% url 'detail_artikel' a.id %}" class="card-title mt-3 h5 d-block text-darker">
+              <a href="{% url 'detail_artikel' a.id %}" class="d-block text-dark mt-2 mb-2 fw-semibold h5">
                 {{ a.judul }}
               </a>
-              <p class="card-description mb-4">
-                {{ a.konten|truncatechars:100 }}
+              <p class="text-muted mb-3">
+                {{ a.konten|safe|truncatechars:100 }}
               </p>
-              <div class="author d-flex align-items-center">
-                <img src="{% static 'landingpage/assets/img/team-2.jpg' %}" alt="author" class="avatar shadow" loading="lazy">
-                <div class="name ps-2">
-                  <span>{{ artikel.created_by }}</span>
-                  <div class="stats">
-                    <small>{{ a.created_at }}</small>
-                  </div>
-                </div>
-              </div>
+              <img src="{% static 'dashboard/assets/img/default-avatar.png' %}"
+              onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name={{ artikel.created_by.get_full_name|default:artikel.created_by.username|urlencode }}&background=0D8ABC&color=fff&size=64';"
+              class="avatar rounded-circle me-2" width="20" height="20" alt="Avatar Penulis">
+              <span class="fw-semibold">{{ a.created_by }}</span><br>
+              <small class="text-muted">{{ a.created_at }}</small>
             </div>
           </div>
         </div>
@@ -68,7 +66,6 @@
           <p class="text-muted">Tidak ada artikel lainnya.</p>
         </div>
         {% endfor %}
-
       </div>
     </div>
   </section>
