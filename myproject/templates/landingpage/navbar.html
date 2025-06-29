@@ -7,7 +7,7 @@
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
     aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon bg-light"></span>
+    <span class="material-icons-round bg-light"></span>
     </button>
 
 
@@ -28,7 +28,7 @@
           data-bs-toggle="dropdown" aria-expanded="false">
           <img src="{% static 'dashboard/assets/img/default-avatar.png' %}"
           onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name={{ user.get_full_name|default:user.username|urlencode }}&background=0D8ABC&color=fff&size=64';"
-          class="material-icons-round me-2" width="32" height="32" alt="avatar">
+          class="rounded-circle me-2" width="32" height="32" alt="avatar">
           {{ user.get_full_name|default:user.username }}
         </a>
           <ul class="dropdown-menu dropdown-menu-end shadow-sm rounded-3 border-0 py-2" style="min-width: 200px;">
@@ -51,7 +51,7 @@
         <!-- Tombol Login -->
         <li class="nav-item">
           <a href="/auth-login" class="btn btn-light btn-sm ms-2">
-            <i class="material-icons me-1">login</i> Login
+            <i class="material-icons-round me-1">login</i> Login
           </a>
         </li>
         {% endif %}
