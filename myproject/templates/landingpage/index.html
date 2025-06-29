@@ -23,9 +23,11 @@
                 <a href="{% url 'detail_artikel' a.id %}" class="text-dark">{{ a.judul }}</a>
               </h4>
               <p>{{ a.konten|safe|truncatechars:200 }}</p>
-              <div class="author">
-                <img src="{% static 'landingpage/assets/img/team-4.jpg' %}" alt="team" class="avatar avatar-sm shadow me-2 border-radius-lg" loading="lazy">
-                <p class="my-auto">{{ a.created_by }}</p>
+              <div class="author d-flex align-items-center">
+                <img src="{% static 'landingpage/assets/img/default-avatar.png' %}"
+                onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name={{ a.created_by.get_full_name|default:a.created_by.username|urlencode }}&background=0D8ABC&color=fff&size=64';"
+                alt="{{ a.created_by }}" class="avatar avatar-sm shadow me-2 border-radius-lg" loading="lazy">
+                <p class="my-auto mb-0">{{ a.created_by }}</p>
               </div>
             </div>
           </div>
